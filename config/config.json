@@ -1,0 +1,45 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "quick-links-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/quickLinks/QuickLinksWebPart.js",
+          "manifest": "./src/webparts/quickLinks/QuickLinksWebPart.manifest.json"
+        }
+      ]
+    },
+    "birthdays-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/birthdays/BirthdaysWebPart.js",
+          "manifest": "./src/webparts/birthdays/BirthdaysWebPart.manifest.json"
+        }
+      ]
+    },
+    "holidays-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/holidays/HolidaysWebPart.js",
+          "manifest": "./src/webparts/holidays/HolidaysWebPart.manifest.json"
+        }
+      ]
+    },
+    "navigation-bar-application-customizer": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/navigationBar/NavigationBarApplicationCustomizer.js",
+          "manifest": "./src/extensions/navigationBar/NavigationBarApplicationCustomizer.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "QuickLinksWebPartStrings": "lib/webparts/quickLinks/loc/{locale}.js",
+    "BirthdaysWebPartStrings": "lib/webparts/birthdays/loc/{locale}.js",
+    "HolidaysWebPartStrings": "lib/webparts/holidays/loc/{locale}.js",
+    "NavigationBarApplicationCustomizerStrings": "lib/extensions/navigationBar/loc/{locale}.js"
+  }
+}

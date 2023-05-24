@@ -1,0 +1,30 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/spfx-serve.schema.json",
+  "port": 4321,
+  "https": true,
+  "initialPage": "https://the451.sharepoint.com/sites/quinn/_layouts/workbench.aspx",
+  "serveConfigurations": {
+    "default": {
+      "pageUrl": "https://the451.sharepoint.com/sites/quinn/SitePages/home.aspx",
+      "customActions": {
+        "29e8f3ca-3a4b-42ac-88c7-0797ccce8c92": {
+          "location": "ClientSideExtension.ApplicationCustomizer",
+          "properties": {
+            "testMessage": "Test message"
+          }
+        }
+      }
+    },
+    "navigationBar": {
+      "pageUrl": "https://the451.sharepoint.com/sites/quinn/SitePages/home.aspx",
+      "customActions": {
+        "29e8f3ca-3a4b-42ac-88c7-0797ccce8c92": {
+          "location": "ClientSideExtension.ApplicationCustomizer",
+          "properties": {
+            "testMessage": "Test message"
+          }
+        }
+      }
+    }
+  }
+}

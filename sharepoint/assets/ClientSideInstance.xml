@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+    <ClientSideComponentInstance
+        Title="NavigationBar"
+        Location="ClientSideExtension.ApplicationCustomizer"
+        ComponentId="29e8f3ca-3a4b-42ac-88c7-0797ccce8c92"
+        Properties="{&quot;testMessage&quot;:&quot;Test message&quot;}">
+    </ClientSideComponentInstance>
+</Elements>
