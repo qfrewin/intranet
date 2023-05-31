@@ -13,12 +13,16 @@
   },
   "dependencies": {
     "@fluentui/react": "^8.109.5",
+    "@microsoft/decorators": "1.17.1",
+    "@microsoft/sp-application-base": "1.17.1",
     "@microsoft/sp-core-library": "1.17.1",
+    "@microsoft/sp-dialog": "1.17.1",
     "@microsoft/sp-http": "1.17.1",
     "@microsoft/sp-lodash-subset": "1.17.1",
     "@microsoft/sp-office-ui-fabric-core": "1.17.1",
     "@microsoft/sp-property-pane": "1.17.1",
     "@microsoft/sp-webpart-base": "1.17.1",
+    "@pnp/common": "^2.15.0",
     "@pnp/logging": "^3.15.0",
     "@pnp/sp": "^3.15.0",
     "@types/sharepoint": "^2016.1.10",
@@ -26,9 +30,7 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "tslib": "2.3.1",
-    "@microsoft/decorators": "1.17.1",
-    "@microsoft/sp-dialog": "1.17.1",
-    "@microsoft/sp-application-base": "1.17.1"
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@microsoft/eslint-config-spfx": "1.17.1",
