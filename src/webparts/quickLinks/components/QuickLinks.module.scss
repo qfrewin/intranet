@@ -1,8 +1,9 @@
 @import '~office-ui-fabric-react/dist/sass/_References.scss';
 
-.quickLinks {
+.quick-links {
   display: flex;
   width: 100%;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }

@@ -9,9 +9,10 @@ export default class QuickLinks extends React.Component<IQuickLinksProps, {}> {
     const { numColumns = 4, items = [], backgroundColor = "white", textColor = "black" } = this.props;
 
     return (
-      <section className={`${styles.quickLinks}`}>
+      <div className={styles['quick-links']}>
+        <h1>Quick Links</h1>
         <Grid columns={numColumns} items={items} backgroundColor={backgroundColor} textColor={textColor}/>
-      </section>
+      </div>
     );
     
   }

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ITestProps } from './ITestProps';
-import { getPeople } from '../../../global/GetPeople';
+import { getPeople, /*getSheetData*/ } from '../../../global/GetPeople';
+//import { GetListItemsHelper } from '../../../global/GetListItemsHelper';
 
 interface ITestState {
   data: string | null;
@@ -42,6 +43,16 @@ export default class Test extends React.Component<ITestProps, ITestState> {
       this.setState({ data: null, error: error.message });
     }
   }
+
+  // private async fetchData() {
+  //   const { context } = this.props;
+  //   try {
+  //     const data = await new GetListItemsHelper().getListItems<any>(context, "TestList", null, null, null);
+  //     this.setState({ data: await JSON.stringify(data)});
+  //   } catch (error) {
+  //     this.setState({ data: null, error: error.message });
+  //   }
+  // }
 
   public render(): React.ReactElement<ITestProps> {
     const { data, error} = this.state;
