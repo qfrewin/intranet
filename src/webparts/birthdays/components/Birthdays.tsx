@@ -1,5 +1,5 @@
 import * as React from 'react';
-//import styles from './Birthdays.module.scss';
+import styles from './Birthdays.module.scss';
 import { IBirthdaysProps } from './IBirthdaysProps';
 import { GetListItemsHelper } from '../../../global/GetListItemsHelper';
 import { formatDateFromString } from '../../../global/DateUtils';
@@ -48,7 +48,8 @@ export default class Birthdays extends React.Component<IBirthdaysProps, IBirthda
     try {
       const nonFormattedItems = await this._getListItems();
       const templates = await this._getCelebrationTemplates();
-      const items = await this._applyTemplates(nonFormattedItems, templates);
+      const nonSortedItems = await this._applyTemplates(nonFormattedItems, templates);
+      const items = this.sortObjectsByDate(nonSortedItems);
       this.setState({ items, templates });
     } catch (error) {
       this.setState({ error: error.message})
@@ -56,27 +57,35 @@ export default class Birthdays extends React.Component<IBirthdaysProps, IBirthda
   }
 
   public render(): React.ReactElement<IBirthdaysProps> {
-    const { description } = this.props;
-    const { items, error } = this.state;
-  
-    return (
-      <section>
-        <div>
-          <p>{description}</p>
-          {error ? <p>Error: {error}</p> : null}
-          {items.map((item, index) => (
-            <div key={index}>
-              <p>Title: {item.Title}</p>
-              <p>Date: {item.Date}</p>
-              <p>Header: {item.Header}</p>
-              <p>Message: {item.Message}</p>
-              {<img src={item.ImageURL} alt="List Item Image" width={50} height={50} />}
+  const { items } = this.state;
+
+  return (
+    <div className={styles.birthdays}>
+      <div className={styles.header}>
+        <h1>Celebrations</h1>
+      </div>
+      <div className={styles['scrollable-container']}>
+        {items.map((item, index) => (
+          <div className={styles['birthday-item']} key={index}>
+            <div
+              className={styles['image-container']}
+              style={item.ImageURL ? { backgroundImage: `url(${item.ImageURL})` } : {}}
+            />
+            <div className={styles['text-container']}>
+              <div className={styles['text-content']}>
+                <h2>{item.Date}</h2>
+                <h1>{item.Header}</h1>
+                <p>{item.Message}</p>
+              </div>
             </div>
-          ))}
-        </div>
-      </section>
-    );
-  }
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+  
 
   private async _getCelebrationTemplates(): Promise<Map<string, TemplateItem>> {
     const helper: GetListItemsHelper = new GetListItemsHelper();
@@ -169,12 +178,12 @@ export default class Birthdays extends React.Component<IBirthdaysProps, IBirthda
     return formattedItems;
   }
 
-  private replacePlaceholders(template: string | undefined, item: ListItem, templates: Map<string, TemplateItem>): string {
-    if (!template) {
+  private replacePlaceholders(templateString: string | undefined, item: ListItem, templates: Map<string, TemplateItem>): string {
+    if (!templateString) {
       return '';
     }
   
-    let formattedTemplate = template;
+    let formattedTemplate = templateString;
   
     const placeholderRegex = /<<([^>>]+)>>/g;
     const matches = formattedTemplate.match(placeholderRegex);
@@ -194,6 +203,7 @@ export default class Birthdays extends React.Component<IBirthdaysProps, IBirthda
           const dateFormat: string = templateItem?.DateFormat || ''; // Use an empty string if dateFormat is null or undefined
           const formattedDate = dateFormat && formatDateFromString(value, dateFormat);
           formattedTemplate = formattedTemplate.replace(match, formattedDate || value);
+          item.Date = formattedDate;
         } else {
           formattedTemplate = formattedTemplate.replace(match, value);
         }
@@ -203,5 +213,17 @@ export default class Birthdays extends React.Component<IBirthdaysProps, IBirthda
     return formattedTemplate;
   }
   
+  private sortObjectsByDate(objects: ListItem[]): ListItem[] {
+    const currentDate = new Date();
+    const sortedObjects = objects.sort((a, b) => {
+      const dateA = new Date(a.Date);
+      const dateB = new Date(b.Date);
+      const currentMonth = currentDate.getMonth();
+      const monthDayA = (dateA.getMonth() + 12 - currentMonth) % 12 * 100 + dateA.getDate();
+      const monthDayB = (dateB.getMonth() + 12 - currentMonth) % 12 * 100 + dateB.getDate();
+      return monthDayA - monthDayB;
+    });
+    return sortedObjects;
+  }
   
 }

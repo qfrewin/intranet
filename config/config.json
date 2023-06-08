@@ -41,6 +41,14 @@
           "manifest": "./src/webparts/test/TestWebPart.manifest.json"
         }
       ]
+    },
+    "locations-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/locations/LocationsWebPart.js",
+          "manifest": "./src/webparts/locations/LocationsWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
@@ -49,6 +57,7 @@
     "BirthdaysWebPartStrings": "lib/webparts/birthdays/loc/{locale}.js",
     "HolidaysWebPartStrings": "lib/webparts/holidays/loc/{locale}.js",
     "NavigationBarApplicationCustomizerStrings": "lib/extensions/navigationBar/loc/{locale}.js",
-    "TestWebPartStrings": "lib/webparts/test/loc/{locale}.js"
+    "TestWebPartStrings": "lib/webparts/test/loc/{locale}.js",
+    "LocationsWebPartStrings": "lib/webparts/locations/loc/{locale}.js"
   }
 }

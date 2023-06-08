@@ -1,0 +1,29 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.locations {
+  display: flex;
+  flex-direction: column;
+}
+
+.locations-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: fit-content;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.location {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 200px;
+  padding: 15px;
+}
+
+.map-container {
+  width: 100%;
+  height: 200px;
+  margin-top: 10px;
+}

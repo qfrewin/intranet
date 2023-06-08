@@ -7,19 +7,19 @@ import {
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 
-import * as strings from 'BirthdaysWebPartStrings';
-import Birthdays from './components/Birthdays';
-import { IBirthdaysProps } from './components/IBirthdaysProps';
+import * as strings from 'LocationsWebPartStrings';
+import Locations from './components/Locations';
+import { ILocationsProps } from './components/ILocationsProps';
 
-export interface IBirthdaysWebPartProps {
+export interface ILocationsWebPartProps {
   description: string;
 }
 
-export default class BirthdaysWebPart extends BaseClientSideWebPart<IBirthdaysWebPartProps> {
+export default class LocationsWebPart extends BaseClientSideWebPart<ILocationsWebPartProps> {
 
   public render(): void {
-    const element: React.ReactElement<IBirthdaysProps> = React.createElement(
-      Birthdays,
+    const element: React.ReactElement<ILocationsProps> = React.createElement(
+      Locations,
       {
         description: this.properties.description,
         context: this.context
